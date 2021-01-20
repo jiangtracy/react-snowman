@@ -24,6 +24,8 @@ import { randomWord, ENGLISH_WORDS} from "./words";
  * - answer: selected secret word*
  */
 
+ // Have another function that has a win/loss 
+
 function Snowman(props) {
   /** by default, allow 6 guesses and use provided gallows images. */
   
