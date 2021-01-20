@@ -33,6 +33,7 @@ function Snowman(props) {
 
   /** guessedWord: show current-state of word:
    if guessed letters are {a,p,e}, show "app_e" for "apple"
+   - if reached maxWrong, don't show anything
    */
   function guessedWord() {
     return (nWrong === props.maxWrong) 
@@ -58,7 +59,9 @@ function Snowman(props) {
     setNWrong(n => n + (answer.includes(ltr) ? 0 : 1));
   }
 
-  /** generateButtons: return array of letter buttons to render */
+  /** generateButtons: return array of letter buttons to render 
+   *  - if reached maxWrong, don't show buttons
+  */
   function generateButtons() {
     
     return (nWrong === props.maxWrong) 
@@ -76,12 +79,14 @@ function Snowman(props) {
     ));
   }
 
+  /** Generate message if the nWrong equals props.maxWrong  */
   function generateLossMsg() {
     return (nWrong === props.maxWrong) 
     ? `You lose, the correct word was ${answer}` 
     : null
   }
 
+  /** Reset the nWrong, guessed and answer */
   function resetGame() {
     setNWrong(0);
     setGuessed(() => new Set());
